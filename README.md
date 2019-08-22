@@ -20,15 +20,15 @@ organization={ACM}
 
 ### Prerequisites
 
--JDK 1.7 or greater
 
--Python modules
-
- -nltk
- -pandas
- -numpy
- -scipy
-
+	-JDk 1.7 or greater
+	 
+	-Python
+	 -nltk
+	 -pandas
+	 -numpy
+	 -scipy
+	 
 ### Basic Usage
 
 #### Example
