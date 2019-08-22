@@ -1,0 +1,53 @@
+
+
+*******************************************************************************
+File List
+*******************************************************************************
+
+This directory contains the binary distribution of CLUTO 2.1.2.
+The files in this directory are the following:
+
+  Linux-i686/             Linux binary distribution (32 bit, gcc)
+  Linux-i686-openmp/      Linux binary distribution (32 bit, icc, openmp)
+  Linux-x86_64            Linux binary distribution (64 bit, gcc)
+  SunOS-sun4u/            SunOS binary distribution (Sun's cc)
+  MSWIN-x86/              MS Windows binary distribution (32 bit, VS 2005)
+  MSWIN-x86-openmp/       MS Windows binary distribution (32 bit, VS 2005, openmp)
+  MSWIN-x86_64/           MS Windows binary distribution (64 bit, VS 2005)
+  MSWIN-x86_64-openmp/    MS Windows binary distribution (64 bit, VS 2005, openmp)
+  Darwin-i386/            Mac OSX binary distribution (intel cpu)
+  Darwin-ppc/             Mac OSX binary distribution (powerpc cpu)
+
+  Matrices/               Some sample datasets
+
+  cluto.h                 The header file for CLUTO's library.
+
+  manual.pdf              CLUTO's user manual in PDF format. 
+  paper1.pdf              A paper describing the criterion functions used
+                          by CLUTO and extensively referred to in the manual. 
+  paper2.pdf              A paper comparing CLUTO's partitional and 
+                          agglomerative algorithms.
+
+  COPYRIGHT               CLUTO's copyright notice and usage agreement.
+  VERSION                 A file containing the version number of CLUTO.
+  CHANGES                 A file listing CLUTO's changes in the various 
+                          releases.
+  RELEASENOTES-2.1.2      Detailed description of some of the new features.
+  README                  This file.
+
+
+
+
+
+*******************************************************************************
+Contact Information
+*******************************************************************************
+
+If you have any questions or problems with CLUTO please contact the author
+at karypis@cs.umn.edu.
+
+
+--------------
+George Karypis
+10/18/2006
+
