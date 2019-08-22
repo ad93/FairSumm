@@ -50,8 +50,8 @@ The supported input text file format is as following:
 	 -.csv file with similarity scores between tweets
 
 #### Output
-The output file is a summary of specified number of tweets stored in the *Summaries* folder.<br/>
-Rouge 1 and Rouge 2 Recall and F-scores are stored in Final\_Output.txt in the following order (separated by tabs):
+The obtained summary of specified number of tweets will get stored in the *Summaries* folder.<br/>
+Rouge 1 and Rouge 2 Recall and F-scores will be stored in Final\_Output.txt in the following order (separated by tabs):
 
 	 -SummaryName	Rouge-1 Recall	Rouge1 F-Score	Rouge-2 Recall	Rouge2 F-Score
 
