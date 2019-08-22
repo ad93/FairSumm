@@ -10,11 +10,17 @@ Abhisek Dash, Anurag Shandilya, Arindam Biswas, Kripabandhu Ghosh, Saptarshi Gho
 BibTex:
 
 @inproceedings{dash2016summarizing,
+
 title={Summarizing User-generated Textual Content: Motivation and Methods for Fairness in Algorithmic Summaries},
+
 author={Dash, Abhisek and Shandilya, Anurag and Biswas, Arindam and Ghosh, Kripabandhu and Ghosh, Saptarshi and Chakraborty, Abhijnan},
+
 booktitle={Computer-Supported Cooperative Work and Social Computing (ACM CSCW), 2019 ACM Conference on},
+
 year={2019},
+
 organization={ACM}
+
 }
 
 
