@@ -21,6 +21,7 @@ organization={ACM}
 ### Prerequisites
 
 *JDK 1.7 or greater
+
 *Python modules
 *nltk
 *pandas
@@ -41,6 +42,7 @@ You can check out the other options available to use with *FairSumm* using:<br/>
 The supported input text file format is as following:
 	-Tweets
 	 -tweet id<||>tweet label<||>tweet text
+	 
 	-Similarity between tweets
 	 -.csv file with similarity scores between tweets
 
