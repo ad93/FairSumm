@@ -43,7 +43,7 @@ You can check out the other options available to use with *FairSumm* using:<br/>
 #### Input
 The supported input text file format is as following:
 
-	-Tweets
+	-Tweets to summarize
 	 -tweetId<||>tweetLabel<||>tweetText
 	 
 	-Similarity between tweets
