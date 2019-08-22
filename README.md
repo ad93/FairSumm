@@ -20,13 +20,14 @@ organization={ACM}
 
 ### Prerequisites
 
-*JDK 1.7 or greater
+-JDK 1.7 or greater
 
-*Python modules
-*nltk
-*pandas
-*numpy
-*scipy
+-Python modules
+
+ -nltk
+ -pandas
+ -numpy
+ -scipy
 
 ### Basic Usage
 
@@ -40,6 +41,7 @@ You can check out the other options available to use with *FairSumm* using:<br/>
 
 #### Input
 The supported input text file format is as following:
+
 	-Tweets
 	 -tweet id<||>tweet label<||>tweet text
 	 
@@ -54,4 +56,6 @@ The output file is a summary of *length* number of tweets stored in the *Summari
 Please send any questions you might have about the code and/or the algorithm to <dash.abhi93@iitkgp.ac.in>.
 
 *Note:* This is only a reference implementation of the *FairSumm* algorithm and could benefit from several performance enhancement schemes, some of which are discussed in the paper.
+
+
 
