@@ -33,7 +33,7 @@ organization={ACM}<br/>
 ### Basic Usage
 
 #### Example
-To run *FairSumm* on Claritin dataset with equal representation fairness notion for a summary of 50 tweets, execute the following command from the project home directory:<br/>
+To run *FairSumm* on *Claritin* dataset with *equal representation* fairness notion for a summary of 50 tweets, execute the following command from the project home directory:<br/>
 	``python FairSumm.py --input Claritin --notion equal --length 50``
 
 #### Options
@@ -50,7 +50,11 @@ The supported input text file format is as following:
 	 -.csv file with similarity scores between tweets
 
 #### Output
-The output file is a summary of *length* number of tweets stored in the *Summaries* folder. 
+The output file is a summary of specified number of tweets stored in the *Summaries* folder.<br/>
+Rouge 1 and Rouge 2 Recall and F-scores are stored in Final\_Output.txt in the following order (separated by tabs):
+
+	 -Summary\_Name	Rouge-1 Recall	Rouge1 F-Score	Rouge-2 Recall	Rouge2 F-Score
+
 
 ### Miscellaneous
 
