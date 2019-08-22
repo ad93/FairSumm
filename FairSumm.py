@@ -14,7 +14,7 @@ from copy import deepcopy
 import subprocess
 import pandas as pd
 import argparse
-
+import zipfile
 
 
 def parse_args():
@@ -35,7 +35,10 @@ if not os.path.exists("./Dataset/"+args.input):
 	print('Enter the dataset name properly. You can check it by executing python FairSumm.py --help on your terminal')
 	exit(0)
 
-A = pd.read_csv('./Dataset/'+args.input+'/cosinescores.csv')
+
+zf = zipfile.ZipFile('./Dataset/'+args.input+'/cosinescores.zip') 
+A = pd.read_csv(zf.open('cosinescores.csv'))
+#A = pd.read_csv('./Dataset/'+args.input+'/cosinescores.csv')
 corpus_sim = list(A.iloc[:, 1:].sum(axis = 1))
 print(sum(corpus_sim))
 
