@@ -53,7 +53,7 @@ The supported input text file format is as following:
 The obtained summary of specified number of tweets will get stored in the *Summaries* folder.<br/>
 Rouge 1 and Rouge 2 Recall and F-scores will be stored in Final\_Output.txt in the following order (separated by tabs):
 
-	 -SummaryName	Rouge-1 Recall	Rouge1 F-Score	Rouge-2 Recall	Rouge2 F-Score
+	 -SummaryName	Rouge-1 Recall	Rouge-1 F-Score	Rouge-2 Recall	Rouge2- F-Score
 
 
 ### Miscellaneous
