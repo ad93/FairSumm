@@ -3,16 +3,16 @@
 Code and Dataset used in the paper titled, *Summarizing User-generated Textual Content: Motivation
 and Methods for Fairness in Algorithmic Summaries* at 2019 ACM Conference on Computer-Supported Cooperative Work and Social Computing (ACM CSCW).
 
-If you are using this code or dataset for any research publication, or for preparing a technical report, you must cite the following paper as the source of the code and dataset.
+If you are using this code or dataset for any research publication, please cite the following paper as the source of the code and dataset.
 
 Abhisek Dash, Anurag Shandilya, Arindam Biswas, Kripabandhu Ghosh, Saptarshi Ghosh, and Abhijnan Chakraborty. "Summarizing User-generated Textual Content: Motivation and Methods for Fairness in Algorithmic Summaries”. In Proceedings of the 2019 ACM Conference on Computer-Supported Cooperative Work and Social Computing (ACM CSCW), Austin, Texas, November 2019.
 
 BibTex:
 
-@inproceedings{dash2016summarizing,<br/>
+@inproceedings{dash2019summarizing,<br/>
 title={Summarizing User-generated Textual Content: Motivation and Methods for Fairness in Algorithmic Summaries},<br/>
 author={Dash, Abhisek and Shandilya, Anurag and Biswas, Arindam and Ghosh, Kripabandhu and Ghosh, Saptarshi and Chakraborty, Abhijnan},<br/>
-booktitle={Computer-Supported Cooperative Work and Social Computing (ACM CSCW), 2019 ACM Conference on},<br/>
+booktitle={Proceedings of ACM Conference on Computer-Supported Cooperative Work and Social Computing (ACM CSCW)},<br/>
 year={2019},<br/>
 organization={ACM}<br/>
 }
