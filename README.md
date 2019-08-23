@@ -1,7 +1,7 @@
 # FairSumm: A fair text summarization algorithm
 
-Code and Dataset used in the paper titled, Summarizing User-generated Textual Content: Motivation
-and Methods for Fairness in Algorithmic Summaries at 2019 ACM Conference on Computer-Supported Cooperative Work and Social Computing (ACM CSCW).
+Code and Dataset used in the paper titled, *Summarizing User-generated Textual Content: Motivation
+and Methods for Fairness in Algorithmic Summaries* at 2019 ACM Conference on Computer-Supported Cooperative Work and Social Computing (ACM CSCW).
 
 If you are using this code or dataset for any research publication, or for preparing a technical report, you must cite the following paper as the source of the code and dataset.
 
