@@ -46,7 +46,7 @@ The supported input text file format is as following:
 	-Input file for FairSumm.py
 	 -input<||>input dataset
 	 -length<||>length of the output summary
-	 -sensitive<||>number of socially salient groups
+	 -num_groups<||>number of socially salient groups in the dataset
 	 -group1<||>required number tweets in the final summary
 	 -group2<||>required number tweets in the final summary
 	

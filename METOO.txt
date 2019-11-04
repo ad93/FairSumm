@@ -1,5 +1,5 @@
 input<||>METOO
 length<||>50
-sensitive<||>2
+num_groups<||>2
 Male<||>25
 Female<||>25
