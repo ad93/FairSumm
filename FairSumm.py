@@ -19,26 +19,38 @@ import zipfile
 
 def parse_args():
 	'''
-	Parses the node2vec arguments.
+	Parses the FairSumm arguments.
 	'''
 	parser = argparse.ArgumentParser(description="Run FairSumm.")
-	parser.add_argument('--input', nargs='?', default='Claritin', help='Input Dataset a) Claritin, b) US-Election C) METOO. Default is Claritin.')
-	parser.add_argument('--notion', type=str, default='equal', help='Notion of fairness a) equal, b) proportional. Default is equal.')
-	parser.add_argument('--length', type=int, default=50, help='Length of the summary. Default is 50.')
+	parser.add_argument('--file', nargs='?', default='input.txt', help= 'Enter the file name containing the input file name, fairness notion and the length of the summary.')
 	return parser.parse_args()
 
+	
 args = parse_args()
+Threshold = {}
+print(args)
+inputfile = open('./'+args.file, 'r').readlines()
+inpt = inputfile[0].split('<||>')[1].strip()
+length = int(inputfile[1].split('<||>')[1].strip())
+num_class = int(inputfile[2].split('<||>')[1].strip())
+for i in range(3, 3+num_class):
+	print(i)
+	content = inputfile[i].split('<||>')
+	Threshold[content[0]] = int(content[1].strip())
 
+if length != sum(list(Threshold.values())):
+	print('Set the thresholds such that sum of tweets of each classes will add up to the length of the summary.')
+	exit(0)
 st = PorterStemmer()
 
-if not os.path.exists("./Dataset/"+args.input):
+if not os.path.exists("./Dataset/"+inpt):
 	print('Enter the dataset name properly. You can check it by executing python FairSumm.py --help on your terminal')
 	exit(0)
 
 
-zf = zipfile.ZipFile('./Dataset/'+args.input+'/cosinescores.zip') 
+zf = zipfile.ZipFile('./Dataset/'+inpt+'/cosinescores.zip') 
 A = pd.read_csv(zf.open('cosinescores.csv'))
-#A = pd.read_csv('./Dataset/'+args.input+'/cosinescores.csv')
+#A = pd.read_csv('./Dataset/'+inpt+'/cosinescores.csv')
 corpus_sim = list(A.iloc[:, 1:].sum(axis = 1))
 print(sum(corpus_sim))
 
@@ -47,7 +59,7 @@ pattern=re.compile(r'[\d+\.]*[\d]+|[^\w]+') #pattern to detect numbers (real/int
 Summary = []
 lamda = 0.5
 inf = 21
-if args.input == 'METOO':
+if inpt == 'METOO':
 	inf = 40
 #stopword dictionary from "stopwords.txt" file
 
@@ -59,7 +71,7 @@ for line in stopWordFile:
 sensitive_info = {}
 Tweets = []
 Tweetids = {}
-with open('./Dataset/'+args.input+'/input.txt', 'r') as file:
+with open('./Dataset/'+inpt+'/input.txt', 'r') as file:
 	for line in file.readlines():
 		sensitive_info[line.split('<||>')[2].strip()] = line.split('<||>')[1]
 		Tweets.append(line.split('<||>')[2].strip())
@@ -202,9 +214,9 @@ def fair_stats(summary):
 	print(Final_Stat)
 
 # This is the segment where the current summary belongs to the matroid or not is checked (Fairness constraint)
-def fairness(summary, notion, k):
+
+def fairness(summary, Threshold, k):
 	Classes = {}
-	Threshold = {}
 	Current = {}
 	TruthValue = True
 	for val in sensitive_info.values():
@@ -213,17 +225,9 @@ def fairness(summary, notion, k):
 		else:
 			Classes[val] += 1
 	
-	if notion == 'equal':
-		for key in Classes:
-			Threshold[key] = round(k/len(Classes.keys()))
-			Current[key] = 0
-	elif notion == 'proportional':
-		for key in Classes:
-			Threshold[key] = round((Classes[key]/float(len(sensitive_info.values())))* k)
-			Current[key] = 0
-	else:
-		print('You have to enter a valid fairness notion: (a) equal or (b) proportional')
-		exit(0)
+	for key in Classes:
+		Current[key] = 0
+
 	#print(Current)
 	for sentence in summary:
 		if sentence not in sensitive_info.keys():
@@ -233,6 +237,10 @@ def fairness(summary, notion, k):
 	for key in Classes.keys():
 		TruthValue = TruthValue and (Current[key] <= Threshold[key])
 	return TruthValue
+'''
+def fairness(summary, k):
+'''	
+
 	
 def extractSummary(cluster_to_sentences_dict):
 	global lamda
@@ -268,7 +276,7 @@ def extractSummary(cluster_to_sentences_dict):
 				if min_increase <= L:
 					min_increase = 0
 				current_summary.append(each_sentence)
-				if fairness(current_summary, args.notion, 50 ):
+				if fairness(current_summary, Threshold, 50 ):
 
 					covereage = min(calculateSimilarityWithSummary(current_summary), (0.1/total_sentences) * sum(corpus_sim))
 
@@ -308,13 +316,13 @@ def main():
 	
 	# Start summarizing procedure
 	print('Starting to create the summary')
-	for i in xrange(args.length):
+	for i in xrange(length):
 		extractSummary(cluster_to_sentences_dict)
 	
 	#Store the summary output		
 	if not os.path.exists("./Summaries"):
 		os.makedirs("./Summaries")
-	filename = "./Summaries/"+args.input+'_'+args.notion+".txt"
+	filename = "./Summaries/"+inpt+".txt"
 	outfile = open(filename,'w')
 			
 	print Summary
@@ -326,16 +334,16 @@ def main():
 	fair_stats(Summary)
 	
 	#Rouge evaluation
-	output = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+args.input+"/Test_Summaries"+"/ 1 B R",shell=True)
+	output = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 1 B R",shell=True)
 	output = float(output)
-	output1 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+args.input+"/Test_Summaries"+"/ 1 B F",shell=True)
+	output1 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 1 B F",shell=True)
 	output1 = float(output1)
-	output2 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+args.input+"/Test_Summaries"+"/ 2 B R",shell=True)
+	output2 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 2 B R",shell=True)
 	output2 = float(output2)
-	output3 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+args.input+"/Test_Summaries"+"/ 2 B F",shell=True)
+	output3 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 2 B F",shell=True)
 	output3 = float(output3)
 	main_output_file = open("Final_Output.txt",'a')
-	main_output_file.write(args.input+'_'+args.notion+"\t"+str(output)+"\t"+str(output1)+"\t"+str(output2)+"\t"+str(output3)+"\n")
+	main_output_file.write(inpt+'_'+"\t"+str(output)+"\t"+str(output1)+"\t"+str(output2)+"\t"+str(output3)+"\n")
 	print "\t"+str(output)+"\t"+str(output1)
 	main_output_file.close()
 
