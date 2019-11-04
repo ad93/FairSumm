@@ -43,7 +43,7 @@ You can check out the other options available to use with *FairSumm* using:<br/>
 #### Input
 The supported input text file format is as following:
 	
-	-Input file for FairSumm.py (Default settings is for *equal representation* fairness notion. You need to change it as per your requirements.)
+	-Input file for FairSumm.py \(Default settings is for *equal representation* fairness notion. You need to change it as per your requirements.\)
 	 -input<||>input dataset
 	 -length<||>length of the output summary
 	 -num_groups<||>number of socially salient groups in the dataset
