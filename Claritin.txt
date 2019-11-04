@@ -1,0 +1,5 @@
+input<||>Claritin
+length<||>50
+sensitive<||>2
+male<||>25
+female<||>25

@@ -1,0 +1,6 @@
+input<||>US-Election
+length<||>50
+sensitive<||>3
+Pro-Republican<||>17
+Pro-Democrat<||>17
+Neutral<||>16
