@@ -236,9 +236,6 @@ def fairness(summary, Threshold, k):
 	for key in Classes.keys():
 		TruthValue = TruthValue and (Current[key] <= Threshold[key])
 	return TruthValue
-'''
-def fairness(summary, k):
-'''	
 
 	
 def extractSummary(cluster_to_sentences_dict):
