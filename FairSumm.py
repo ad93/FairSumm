@@ -34,7 +34,6 @@ inpt = inputfile[0].split('<||>')[1].strip()
 length = int(inputfile[1].split('<||>')[1].strip())
 num_class = int(inputfile[2].split('<||>')[1].strip())
 for i in range(3, 3+num_class):
-	print(i)
 	content = inputfile[i].split('<||>')
 	Threshold[content[0]] = int(content[1].strip())
 
