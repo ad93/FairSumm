@@ -34,7 +34,7 @@ organization={ACM}<br/>
 
 #### Example
 To run *FairSumm* on *Claritin* dataset with *equal representation* fairness notion for a summary of 50 tweets, execute the following command from the project home directory:<br/>
-	``python FairSumm.py --input Claritin --notion equal --length 50``
+	``python FairSumm.py --file Claritin.txt``
 
 #### Options
 You can check out the other options available to use with *FairSumm* using:<br/>
@@ -42,7 +42,14 @@ You can check out the other options available to use with *FairSumm* using:<br/>
 
 #### Input
 The supported input text file format is as following:
-
+	
+	-Input file for FairSumm.py
+	 -input<||>input dataset
+	 -length<||>length of the output summary
+	 -sensitive<||>number of socially salient groups
+	 -group1<||>required number tweets in the final summary
+	 -group2<||>required number tweets in the final summary
+	
 	-Tweets to summarize
 	 -tweetId<||>tweetLabel<||>tweetText
 	 
