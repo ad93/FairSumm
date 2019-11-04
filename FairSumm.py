@@ -22,7 +22,7 @@ def parse_args():
 	Parses the FairSumm arguments.
 	'''
 	parser = argparse.ArgumentParser(description="Run FairSumm.")
-	parser.add_argument('--file', nargs='?', default='input.txt', help= 'Enter the file name containing the input file name, fairness notion and the length of the summary.')
+	parser.add_argument('--file', nargs='?', default='Claritin.txt', help= 'Enter the file name containing the input file name, fairness notion and the length of the summary.')
 	return parser.parse_args()
 
 	
