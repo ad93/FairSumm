@@ -43,7 +43,7 @@ You can check out the other options available to use with *FairSumm* using:<br/>
 	``python FairSumm.py --help``
 
 #### Datasets
-We use three tweet datasets [*can be found in the dataset folder*] related to (a) Claritin side-effects, (b) MeToo movement and (c) US-presidential election to generate fair summaries. (Details can be found in the paper)
+We use three tweet datasets [*can be found in the dataset folder*] related to (a) Claritin drug side-effects, (b) MeToo movement and (c) US-presidential election to generate fair summaries. (Details can be found in the paper)
 
 #### Input
 The supported input text file format is as following:
