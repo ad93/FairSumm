@@ -43,7 +43,7 @@ You can check out the other options available to use with *FairSumm* using:<br/>
 #### Input
 The supported input text file format is as following:
 	
-	-Input file for FairSumm.py (Default settings is for equal representation fairness notion. You need to change it as per your requirements.)
+	-Input file for FairSumm.py (Default settings is for equal representation fairness notion. You need to change it as per your requirements by giving the desired number of tweets you want from each of the classes in the final summary.)
 	 -input<||>input dataset
 	 -length<||>length of the output summary
 	 -num_groups<||>number of socially salient groups in the dataset
@@ -58,10 +58,13 @@ The supported input text file format is as following:
 
 #### Output
 The obtained summary of specified number of tweets will get stored in the *Summaries* folder.<br/>
+
+If you set the evaluation variable to 1 then Rouge scores will be evaluated and stored as described below: <br/>
 Rouge 1 and Rouge 2 Recall and F-scores will be stored in Final\_Output.txt in the following order (separated by tabs):
 
 	 -SummaryName	Rouge-1 Recall	Rouge-1 F-Score	Rouge-2 Recall	Rouge2- F-Score
 
+In case you need to add more human generated summary you can add them in the Test_Summaries folder of the corresponding dataset.
 
 ### Miscellaneous
 
