@@ -35,10 +35,13 @@ organization={ACM}<br/>
 #### Example
 To run *FairSumm* on *Claritin* dataset with *equal representation* fairness notion for a summary of 50 tweets, execute the following command from the project home directory:<br/>
 	``python FairSumm.py --file Claritin.txt``
+If you do *not* want to evaluate the ROUGE scores set the *evaluation* variable to 0 while executing.<br/>
+	``python FairSumm.py --file Claritin.txt --evaluation 0``
 
 #### Options
 You can check out the other options available to use with *FairSumm* using:<br/>
 	``python FairSumm.py --help``
+
 
 #### Input
 The supported input text file format is as following:

@@ -23,13 +23,17 @@ def parse_args():
 	'''
 	parser = argparse.ArgumentParser(description="Run FairSumm.")
 	parser.add_argument('--file', nargs='?', default='Claritin.txt', help= 'Enter the file name containing the input file name, fairness notion and the length of the summary. a) Claritin.txt or b) US-Election.txt or c) METOO.txt. Default is Claritin.txt')
-	parser.add_argument('--evaluation', nargs = '?', type=int, default = 1, help='Evaluate ROUGE scores. Default is 1.')
+	parser.add_argument('--evaluation', nargs = '?', type=int, default = 1, help='If 1, the code evaluates ROUGE scores for the generated summary. If 0, it does not evaluate the ROUGE scores. Default value is 1.')
 	return parser.parse_args()
 
 	
 args = parse_args()
 Threshold = {}
 print(args)
+if args.evaluation not in {0, 1}:
+	print('Please enter either 0 or 1 for evaluation')
+	exit(0)
+	
 print(type(args.evaluation))
 #exit(0)
 inputfile = open('./'+args.file, 'r').readlines()
@@ -41,7 +45,7 @@ for i in range(3, 3+num_class):
 	Threshold[content[0]] = int(content[1].strip())
 
 if length != sum(list(Threshold.values())):
-	print('Set the thresholds such that sum of tweets of each classes will add up to the length of the summary.')
+	print('Set the thresholds such that sum of tweets of each classes will add up to the length of the desired summary.')
 	exit(0)
 st = PorterStemmer()
 
