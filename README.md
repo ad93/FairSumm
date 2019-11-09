@@ -35,7 +35,7 @@ organization={ACM}<br/>
 #### Example
 To run *FairSumm* on *Claritin* dataset with *equal representation* fairness notion for a summary of 50 tweets, execute the following command from the project home directory:<br/>
 	``python FairSumm.py --file Claritin.txt``<br/>
-If you do *not* want to evaluate the ROUGE scores set the *evaluation* variable to 0 while executing.<br/>
+If you do **not** want to evaluate the ROUGE scores set the *evaluation* variable to 0 while executing. This will only create a summary without evaluating the ROUGE.<br/>
 	``python FairSumm.py --file Claritin.txt --evaluation 0``
 
 #### Options
