@@ -23,12 +23,15 @@ def parse_args():
 	'''
 	parser = argparse.ArgumentParser(description="Run FairSumm.")
 	parser.add_argument('--file', nargs='?', default='Claritin.txt', help= 'Enter the file name containing the input file name, fairness notion and the length of the summary. a) Claritin.txt or b) US-Election.txt or c) METOO.txt. Default is Claritin.txt')
+	parser.add_argument('--evaluation', nargs = '?', type=int, default = 1, help='Evaluate ROUGE scores. Default is 1.')
 	return parser.parse_args()
 
 	
 args = parse_args()
 Threshold = {}
 print(args)
+print(type(args.evaluation))
+#exit(0)
 inputfile = open('./'+args.file, 'r').readlines()
 inpt = inputfile[0].split('<||>')[1].strip()
 length = int(inputfile[1].split('<||>')[1].strip())
@@ -330,18 +333,19 @@ def main():
 	fair_stats(Summary)
 	
 	#Rouge evaluation
-	output = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 1 B R",shell=True)
-	output = float(output)
-	output1 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 1 B F",shell=True)
-	output1 = float(output1)
-	output2 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 2 B R",shell=True)
-	output2 = float(output2)
-	output3 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 2 B F",shell=True)
-	output3 = float(output3)
-	main_output_file = open("Final_Output.txt",'a')
-	main_output_file.write(inpt+'_'+"\t"+str(output)+"\t"+str(output1)+"\t"+str(output2)+"\t"+str(output3)+"\n")
-	print "\t"+str(output)+"\t"+str(output1)
-	main_output_file.close()
+	if args.evaluation==1:
+		output = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 1 B R",shell=True)
+		output = float(output)
+		output1 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 1 B F",shell=True)
+		output1 = float(output1)
+		output2 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 2 B R",shell=True)
+		output2 = float(output2)
+		output3 = subprocess.check_output("java -cp C_Rouge/C_ROUGE.jar executiverouge.C_ROUGE "+ filename +" ./Dataset/"+inpt+"/Test_Summaries"+"/ 2 B F",shell=True)
+		output3 = float(output3)
+		main_output_file = open("Final_Output.txt",'a')
+		main_output_file.write(inpt+'_'+"\t"+str(output)+"\t"+str(output1)+"\t"+str(output2)+"\t"+str(output3)+"\n")
+		print "\t"+str(output)+"\t"+str(output1)
+		main_output_file.close()
 
 if __name__ == '__main__':	
 	main()
