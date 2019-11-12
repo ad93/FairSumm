@@ -48,7 +48,7 @@ We use three tweet datasets [*can be found in the dataset folder*] related to (a
 #### Input
 The supported input text file format is as following:
 	
-	-Input file for FairSumm.py (Default settings is for equal representation fairness notion. You need to change it as per your requirements by giving the desired number of tweets you want from each of the classes in the final summary.)
+	-Input file for FairSumm.py (Default settings is for equal representation fairness notion. <br/>You need to change it as per your requirements by giving the desired number of tweets you want from each of the classes in the final summary.)
 	 -input<||>input dataset
 	 -length<||>length of the output summary
 	 -num_groups<||>number of socially salient groups in the dataset
