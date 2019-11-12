@@ -66,10 +66,10 @@ The supported input text file format is as following:
 Claritin.txt, METOO.txt and US-Election.txt are sample input files for generating summaries of length 50 tweets that follow the equal represenation fairness notion, from the three datasets respectively.
 
 #### Output
-The obtained summary of specified number of tweets will get stored in the *Summaries* folder.<br/>
+The obtained summary of specified number of tweets will get stored in the *Summaries* folder. (Will get created)<br/>
 
 If you set the evaluation variable to 1 then Rouge scores will be evaluated and stored as described below: <br/>
-Rouge 1 and Rouge 2 Recall and F-scores will be stored in Final\_Output.txt in the following order (separated by tabs):
+Rouge 1 and Rouge 2 Recall and F-scores will be stored in Final\_Output.txt in the following order (separated by tabs) in the parent directory:
 
 	 -SummaryName	Rouge-1 Recall	Rouge-1 F-Score	Rouge-2 Recall	Rouge2- F-Score
 
