@@ -49,7 +49,8 @@ We use three tweet datasets [*can be found in the dataset folder*] related to (a
 The supported input text file format is as following:
 	
 	-Input file for FairSumm.py (Default settings is for equal representation fairness notion.) 
-	-You need to change it as per your requirements by giving the desired number of tweets you want from each of the classes in the final summary.
+	-You need to change it as per your requirements by giving the desired number of tweets from each of the classes.
+	
 	 -input<||>input dataset
 	 -length<||>length of the output summary
 	 -num_groups<||>number of socially salient groups in the dataset
@@ -61,6 +62,8 @@ The supported input text file format is as following:
 	 
 	-Similarity between tweets
 	 -.csv file with similarity scores between tweets
+
+Claritin.txt, METOO.txt and US-Election.txt are sample input files for generating summaries of length 50 tweets that follow the equal represenation fairness notion, from the three datasets respectively.
 
 #### Output
 The obtained summary of specified number of tweets will get stored in the *Summaries* folder.<br/>
