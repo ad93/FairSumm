@@ -49,7 +49,7 @@ We use three tweet datasets [*can be found in the dataset folder*] related to (a
 The supported input text file format is as following:
 	
 	-Input file for FairSumm.py (Default settings is for equal representation fairness notion.) 
-	-You need to change it as per your requirements by giving the desired number of tweets from each of the classes.
+	-You need to change it as per your requirements by giving the desired number of tweets from each classes.
 	
 	 -input<||>input dataset
 	 -length<||>length of the output summary
