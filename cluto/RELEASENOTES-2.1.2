@@ -1,0 +1,101 @@
+Release Notes for CLUTO 2.1.2
+--------------------------------------------------------------------------
+
+1. Introduction
+
+This is an experimental (i.e., not extensively tested release of CLUTO)
+that contains a few bug-fixes and many improvements/enhancements. 
+The two major enhancements have to do with multi-threading support and 
+the redesigned API to handle critical errors.
+
+
+2. Multi-Threading Support
+
+CLUTO can now take advantage of multi-core processors or SMP workstations.
+This is done by parallelizing portions of the code using the directive-based 
+shared-memory parallelization framework of OpenMP. 
+
+At this point, only a small fraction of CLUTO's code has been parallelized 
+using OpenMP and represents mostly a proof-of-concept. The OpenMP enabled
+portions of CLUTO are:
+
+  - vcluster's rb clustering method (i.e., what you get if you just run 
+    vcluster with no options).
+  - vcluster's all-to-all similarity calculations for the agglo clustering
+    method.
+  - vcluster's h1 and h2 merging schemes for the agglo clustering method.
+
+Initial results are encouraging, and future releases will expand the 
+portions of the code/algorithms that will become multi-threaded.
+
+
+2.1. System Requirements
+
+CLUTO currently supports multi-threading on MS Windows (using Visual Studio
+2005) and on 32 bit Linux systems (using Intel's icc compiler). 
+
+In order to run the MS Windows binaries on your system you may have to 
+download and install Visual Studio's redistributable libraries that contain 
+all required DLLs. These libraries can be downloaded from:
+http://www.microsoft.com/downloads/details.aspx?FamilyId=32BC1BEE-A3F9-4C13-9C99-220B62A191EE
+
+For the Linux distribution, you do not need any additional files as all
+required libraries have been linked statically.
+
+
+2.2. Specifying the Number of Threads
+
+CLUTO by default uses two threads. However, the number of threads can be 
+changed by setting the OMP_NUM_THREADS environmental variable to the desired
+number of threads (depending on your system, this can be done by using 
+set/setenv commands). Note, that setting the number of threads to one, runs
+the program in single-threaded (i.e., serial) mode.
+
+2.3. Hyper-threading
+
+CLUTO does not take advantage of hyper-threading processors (its performance 
+actually reduces). If your system consists of just a single hyper-threading
+processors, then you have to use the single-threaded codes. If your system
+is an SMP/dual-core with hyper-threading processors, then you have to disable
+hyper-threading from BIOS in order to get any speedup (as opposed to slow down).
+
+
+
+3. Redesigned API
+
+CLUTO now includes an additional set of API routines that in case of critical
+errors (e.g., memory allocation failure) do not terminate the process but 
+return control to the calling program with an appropriate error code. In
+addition, these routines also free up any memory that CLUTO's routines may
+have allocated up to that point.
+
+Note, the old API routines are still available, so your program does not need
+to change in order to link to 2.1.2. However, changing to the new API routines
+is needed to take advantage of the above feature.
+
+The format of the new API is similar to the old API routines. The only difference
+is that they are prefixed with '__' and that they have an extra argument at the
+end of the argument list that stores the exit code of the routine. The number and 
+meaning of the other arguments remains the same.
+
+For example, the old API for CLUTO_VP_ClusterDirect() is: 
+
+ void CLUTO_VP_ClusterDirect(int nrows, int ncols, int *rowptr, int *rowind,
+            float *rowval, int simfun, int crfun, int rowmodel, int colmodel, 
+            float colprune, int ntrials, int niter, int seed, int dbglvl, 
+            int nparts, int *part)
+
+and the new API is:
+
+ void __CLUTO_VP_ClusterDirect(int nrows, int ncols, int *rowptr, int *rowind,
+            float *rowval, int simfun, int crfun, int rowmodel, int colmodel, 
+            float colprune, int ntrials, int niter, int seed, int dbglvl, 
+            int nparts, int *part, int *xcode)
+
+The possible values for xcode are defined at the end of cluto.h and are:
+CLUTO_EXIT_NORMAL, CLUTO_EXIT_NOTENOUGHMEMORY, and CLUTO_EXIT_ERROR.
+
+
+
+
+

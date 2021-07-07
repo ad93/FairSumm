@@ -1,0 +1,5 @@
+input<||>METOO
+length<||>50
+num_groups<||>2
+Male<||>25
+Female<||>25

@@ -1,0 +1,5 @@
+input<||>Claritin
+length<||>50
+num_groups<||>2
+male<||>25
+female<||>25
